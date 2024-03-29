@@ -1,8 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Resto del código inicial...
+    // Revisa si el usuario está autenticado al cargar la página.
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (!isLoggedIn) {
+        window.location.href = 'login.html';
+    } else {
+        cargarProductos(); // Solo carga los productos si el usuario está autenticado.
+    }
 
-    // Corregir y habilitar la funcionalidad de agregar productos
-    document.getElementById('agregarProductoBtn').addEventListener('click', agregarProducto);
+    // Evento para el botón de inicio de sesión.
+    const loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) {
+        loginBtn.addEventListener('click', login);
+    }
 });
 
 function cargarProductos() {
