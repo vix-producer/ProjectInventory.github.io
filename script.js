@@ -22,6 +22,7 @@ function cargarProductos() {
     ];
 
     const listaProductos = document.getElementById('lista-productos');
+    listaProductos.innerHTML = ''; // Limpiar la lista antes de cargar productos para evitar duplicados.
 
     productos.forEach(producto => {
         const tr = document.createElement('tr');
@@ -33,7 +34,7 @@ function cargarProductos() {
             <td>${producto.cantidad}</td>
             <td>${producto.cantidad_maxima}</td>
             <td>${producto.estado}</td>
-            <td><button class="btn btn-danger" onclick="eliminarProducto(${producto.id})">Eliminar</button></td>
+            <td><button class="btn btn-danger" onclick="eliminarProducto('producto-${producto.id}')">Eliminar</button></td>
         `;
         listaProductos.appendChild(tr);
     });
@@ -41,7 +42,7 @@ function cargarProductos() {
 
 function eliminarProducto(id) {
     // Usa el ID único asignado para encontrar la fila del producto y eliminarla.
-    const productoAEliminar = document.getElementById(`producto-${id}`);
+    const productoAEliminar = document.getElementById(id);
     if (productoAEliminar) {
         productoAEliminar.remove();
     } else {
@@ -49,9 +50,6 @@ function eliminarProducto(id) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('loginBtn').addEventListener('click', login);
-});
 
 function login() {
     const usuario = document.getElementById('usuario').value;
