@@ -22,10 +22,10 @@ function cargarProductos() {
     ];
 
     const listaProductos = document.getElementById('lista-productos');
-    listaProductos.innerHTML = ''; // Asegurarse de limpiar la lista existente antes de añadir.
 
     productos.forEach(producto => {
         const tr = document.createElement('tr');
+        tr.id = `producto-${producto.id}`; // Asigna un ID único a la fila del producto.
         tr.innerHTML = `
             <td>${producto.id}</td>
             <td>${producto.codigo}</td>
@@ -33,17 +33,25 @@ function cargarProductos() {
             <td>${producto.cantidad}</td>
             <td>${producto.cantidad_maxima}</td>
             <td>${producto.estado}</td>
-            <td><button class="btn btn-danger">Eliminar</button></td>
+            <td><button class="btn btn-danger" onclick="eliminarProducto(${producto.id})">Eliminar</button></td>
         `;
         listaProductos.appendChild(tr);
-
-        // Añadir listener para el botón de eliminar de esta fila
-        tr.querySelector('.btn-danger').addEventListener('click', function() {
-            this.closest('tr').remove();
-        });
     });
 }
 
+function eliminarProducto(id) {
+    // Usa el ID único asignado para encontrar la fila del producto y eliminarla.
+    const productoAEliminar = document.getElementById(`producto-${id}`);
+    if (productoAEliminar) {
+        productoAEliminar.remove();
+    } else {
+        alert("Producto no encontrado");
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('loginBtn').addEventListener('click', login);
+});
 
 function login() {
     const usuario = document.getElementById('usuario').value;
