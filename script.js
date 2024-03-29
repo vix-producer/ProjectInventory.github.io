@@ -1,13 +1,17 @@
-// script.js
 document.addEventListener('DOMContentLoaded', function () {
-const isLoggedIn = localStorage.getItem('isLoggedIn');
+    // Revisa si el usuario está autenticado al cargar la página.
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
     if (!isLoggedIn) {
-        // Si no está autenticado, redirige a la página de inicio de sesión
         window.location.href = 'login.html';
     } else {
-        // Si está autenticado, carga el inventario
-    cargarProductos();
-}
+        cargarProductos(); // Solo carga los productos si el usuario está autenticado.
+    }
+
+    // Evento para el botón de inicio de sesión.
+    const loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) {
+        loginBtn.addEventListener('click', login);
+    }
 });
 
 function cargarProductos() {
@@ -21,6 +25,7 @@ function cargarProductos() {
 
     productos.forEach(producto => {
         const tr = document.createElement('tr');
+        tr.id = `producto-${producto.id}`; // Asigna un ID único a la fila del producto.
         tr.innerHTML = `
             <td>${producto.id}</td>
             <td>${producto.codigo}</td>
@@ -34,38 +39,14 @@ function cargarProductos() {
     });
 }
 
-function agregarProducto() {
-    const codigo = document.getElementById('inputCodigo').value;
-    const nombre = document.getElementById('inputNombre').value;
-    const cantidad = document.getElementById('inputCantidad').value;
-    const cantidadMaxima = document.getElementById('inputCantidadMaxima').value;
-
-    const nuevoProducto = {
-        id: Math.floor(Math.random() * 1000) + 1,
-        codigo: codigo,
-        nombre: nombre,
-        cantidad: cantidad,
-        cantidad_maxima: cantidadMaxima,
-        estado: cantidad == cantidadMaxima ? "Disponible" : "Por rellenar"
-    };
-
-    const listaProductos = document.getElementById('lista-productos');
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-        <td>${nuevoProducto.id}</td>
-        <td>${nuevoProducto.codigo}</td>
-        <td>${nuevoProducto.nombre}</td>
-        <td>${nuevoProducto.cantidad}</td>
-        <td>${nuevoProducto.cantidad_maxima}</td>
-        <td>${nuevoProducto.estado}</td>
-        <td><button class="btn btn-danger" onclick="eliminarProducto(${nuevoProducto.id})">Eliminar</button></td>
-    `;
-    listaProductos.appendChild(tr);
-}
-
 function eliminarProducto(id) {
-    const productoAEliminar = document.getElementById(id);
-    productoAEliminar.remove();
+    // Usa el ID único asignado para encontrar la fila del producto y eliminarla.
+    const productoAEliminar = document.getElementById(`producto-${id}`);
+    if (productoAEliminar) {
+        productoAEliminar.remove();
+    } else {
+        alert("Producto no encontrado");
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
