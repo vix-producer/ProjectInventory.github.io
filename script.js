@@ -22,11 +22,10 @@ function cargarProductos() {
     ];
 
     const listaProductos = document.getElementById('lista-productos');
-    listaProductos.innerHTML = ''; // Limpiar la lista antes de cargar productos para evitar duplicados.
+    listaProductos.innerHTML = ''; // Asegurarse de limpiar la lista existente antes de añadir.
 
     productos.forEach(producto => {
         const tr = document.createElement('tr');
-        tr.id = `producto-${producto.id}`; // Asigna un ID único a la fila del producto.
         tr.innerHTML = `
             <td>${producto.id}</td>
             <td>${producto.codigo}</td>
@@ -34,20 +33,15 @@ function cargarProductos() {
             <td>${producto.cantidad}</td>
             <td>${producto.cantidad_maxima}</td>
             <td>${producto.estado}</td>
-            <td><button class="btn btn-danger" onclick="eliminarProducto('producto-${producto.id}')">Eliminar</button></td>
+            <td><button class="btn btn-danger">Eliminar</button></td>
         `;
         listaProductos.appendChild(tr);
-    });
-}
 
-function eliminarProducto(id) {
-    // Usa el ID único asignado para encontrar la fila del producto y eliminarla.
-    const productoAEliminar = document.getElementById(id);
-    if (productoAEliminar) {
-        productoAEliminar.remove();
-    } else {
-        alert("Producto no encontrado");
-    }
+        // Añadir listener para el botón de eliminar de esta fila
+        tr.querySelector('.btn-danger').addEventListener('click', function() {
+            this.closest('tr').remove();
+        });
+    });
 }
 
 
