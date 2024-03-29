@@ -68,23 +68,29 @@ function eliminarProducto(id) {
     productoAEliminar.remove();
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const loginBtn = document.getElementById('loginBtn');
-    loginBtn.addEventListener('click', function() {
-        login();
-    });
+document.addEventListener('DOMContentLoaded', function () {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (!isLoggedIn) {
+        // Si no está autenticado, redirige a la página de inicio de sesión
+        window.location.href = 'login.html';
+    } else {
+        // Si está autenticado, realiza las acciones necesarias para la página cargada
+        // Por ejemplo, cargarProductos();
+    }
 });
+
 
 function login() {
     const usuario = document.getElementById('usuario').value;
     const contraseña = document.getElementById('contraseña').value;
 
     // Verificar las credenciales del usuario
-    if (usuario === 'ale' && contraseña === '142536') {
-        // Credenciales válidas, redirigir a otra página (en este caso, index.html)
-        window.location.href = 'index.html';
+    if (usuario === 'user' && contraseña === 'password') {
+        // Credenciales válidas, establece isLoggedIn en localStorage
+        localStorage.setItem('isLoggedIn', 'true');
+        window.location.href = 'index.html'; // Redirige al usuario a la página principal
     } else {
-        // Credenciales inválidas, mostrar mensaje de error
+        // Credenciales inválidas, muestra mensaje de error
         alert('Usuario o contraseña incorrectos');
     }
 }
