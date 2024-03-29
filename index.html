@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Inventario</h2>
+        <div class="add-product-form mb-3">
+            <h4>Agregar Producto</h4>
+            <div class="form-group">
+                <label for="inputCodigo">Código</label>
+                <input type="text" class="form-control" id="inputCodigo" required>
+            </div>
+            <div class="form-group">
+                <label for="inputNombre">Nombre</label>
+                <input type="text" class="form-control" id="inputNombre" required>
+            </div>
+            <div class="form-group">
+                <label for="inputCantidad">Cantidad</label>
+                <input type="number" class="form-control" id="inputCantidad" required>
+            </div>
+            <div class="form-group">
+                <label for="inputCantidadMaxima">Cantidad Máxima</label>
+                <input type="number" class="form-control" id="inputCantidadMaxima" required>
+            </div>
+            <button class="btn btn-primary" onclick="agregarProducto()">Agregar</button>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Cantidad Máxima</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="lista-productos">
+                <!-- Los productos se insertarán aquí mediante JavaScript -->
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

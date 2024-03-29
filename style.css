@@ -1,0 +1,66 @@
+/* styles.css */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    max-width: 400px;
+    width: 100%;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-login {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-login-heading {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.add-product-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.add-product-form h4 {
+    margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+}
+body {
+    background-image: url('https://www.managebac.com/wp-content/uploads/2023/01/Lincoln-School-Hero-scaled.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    height: 100vh;
+}
+
+.login-row {
+    height: 100%;
+}
+
+.login-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

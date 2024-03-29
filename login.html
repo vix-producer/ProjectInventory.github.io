@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadatos de la página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <!-- Enlace al archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Estilos adicionales para el cuerpo del documento -->
+    <style>
+        body {
+            background-image: url('https://www.managebac.com/wp-content/uploads/2023/01/Lincoln-School-Hero-scaled.jpg'); /* URL de la imagen de fondo */
+            background-size: cover; /* Ajustar la imagen al tamaño de la pantalla */
+            background-position: center; /* Posicionar la imagen en el centro */
+            height: 100vh; /* Tamaño completo de la ventana */
+            display: flex; /* Mostrar como un contenedor flexible */
+            justify-content: center; /* Centrar horizontalmente */
+            align-items: center; /* Centrar verticalmente */
+        }
+
+        .card {
+            width: 100%;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div class="container">
+        <!-- Fila para centrar el contenido horizontalmente -->
+        <div class="row justify-content-center">
+            <!-- Columna para el formulario de inicio de sesión -->
+            <div class="col-md-4">
+                <!-- Tarjeta para el formulario -->
+                <div class="card">
+                    <!-- Encabezado de la tarjeta -->
+                    <div class="card-header">Iniciar sesión</div>
+                    <!-- Cuerpo de la tarjeta -->
+                    <div class="card-body">
+                        <!-- Formulario de inicio de sesión -->
+                        <form>
+                            <!-- Campo de entrada para el usuario -->
+                            <div class="form-group">
+                                <label for="usuario">Usuario:</label>
+                                <input type="text" class="form-control" id="usuario" name="usuario" required>
+                            </div>
+                            <!-- Campo de entrada para la contraseña -->
+                            <div class="form-group">
+                                <label for="contraseña">Contraseña:</label>
+                                <input type="password" class="form-control" id="contraseña" name="contraseña" required>
+                            </div>
+                            <!-- Botón para enviar el formulario -->
+                            <button type="button" class="btn btn-primary btn-block" id="loginBtn">Iniciar sesión</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
