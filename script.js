@@ -6,18 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function cargarProductos() {
-    const productos = [
-        { id: 1, codigo: "1001", nombre: "Producto 1", cantidad: 10, cantidad_maxima: 20, estado: determinarEstado(10, 20) },
-        { id: 2, codigo: "1002", nombre: "Producto 2", cantidad: 5, cantidad_maxima: 15, estado: determinarEstado(5, 15) },
-        { id: 3, codigo: "1003", nombre: "Producto 3", cantidad: 20, cantidad_maxima: 20, estado: determinarEstado(20, 20) }
-    ];
-
+    // Asumiendo que ya tienes definida la lista de productos...
     const listaProductos = document.getElementById('lista-productos');
-    listaProductos.innerHTML = ''; // Limpiar lista antes de cargar productos
+    listaProductos.innerHTML = ''; // Limpia la lista existente
 
     productos.forEach(producto => {
         const tr = document.createElement('tr');
-        tr.id = `producto-${producto.id}`;
         tr.innerHTML = `
             <td>${producto.id}</td>
             <td>${producto.codigo}</td>
@@ -27,12 +21,18 @@ function cargarProductos() {
             <td>${producto.estado}</td>
             <td>
                 <button class="btn btn-danger" onclick="eliminarProducto(${producto.id})">Eliminar</button>
-                <button class="btn btn-warning" onclick="rellenarProducto(${producto.id})">Rellenar</button>
+                <button class="btn btn-secondary" onclick="rellenarProducto(${producto.id})">Rellenar</button>
+                <button class="btn btn-info" onclick="editarProducto(${producto.id})">Editar</button>
             </td>
         `;
         listaProductos.appendChild(tr);
     });
 }
+
+function editarProducto(id) {
+    alert(`Editar producto ${id} no está implementado.`);
+}
+
 
 function determinarEstado(cantidad, cantidadMaxima) {
     // Determinar el estado en base a la cantidad actual y la cantidad máxima
@@ -70,10 +70,16 @@ function agregarProducto() {
 }
 
 function rellenarProducto(id) {
-    // Esta función debería actualizar la cantidad del producto al máximo y ajustar su estado
-    // La lógica específica dependerá de cómo se manejen los productos (ej., actualización en el servidor o en un array en memoria)
-    alert('Función de rellenar no implementada');
+    // Encuentra el producto por su ID.
+    const producto = productos.find(p => p.id === id);
+    if (producto) {
+        producto.cantidad = producto.cantidad_maxima;
+        cargarProductos(); // Vuelve a cargar la lista de productos para reflejar el cambio.
+    } else {
+        alert("Producto no encontrado");
+    }
 }
+
 
 
 function eliminarProducto(id) {
