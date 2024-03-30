@@ -87,11 +87,12 @@ function agregarProducto() {
 }
 
 function rellenarProducto(id) {
-    const producto = productos.find(p => p.id === id);
-    if (producto) {
+    const productoIndex = productos.findIndex(p => p.id === id);
+    if (productoIndex !== -1) {
+        const producto = productos[productoIndex];
         if (producto.cantidad < producto.cantidad_maxima / 2) {
             producto.cantidad = producto.cantidad_maxima;
-            cargarProductos();
+            cargarProductos(); // Recarga la lista de productos después de rellenar
         } else {
             alert("La cantidad actual no está por debajo del 50% de la cantidad máxima.");
         }
@@ -99,7 +100,6 @@ function rellenarProducto(id) {
         alert("Producto no encontrado");
     }
 }
-
 
 
 function eliminarProducto(id) {
