@@ -107,6 +107,9 @@ function rellenarProducto(id) {
             producto.cantidad = producto.cantidad_maxima;
             cargarProductos(); // Recarga la lista de productos después de rellenar
             
+            // No hay necesidad de cambiar el ID aquí
+            // Mantener el mismo ID
+            
             // Actualizar el valor de cantidad en la tabla
             const cantidadElement = document.getElementById(`producto-${id}`).querySelectorAll('td')[3];
             cantidadElement.textContent = producto.cantidad;
