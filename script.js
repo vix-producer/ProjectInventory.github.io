@@ -40,9 +40,9 @@ function cargarProductos() {
 function editarProducto(id) {
     const producto = productos.find(p => p.id === id);
     if (producto) {
-        const nuevoNombre = prompt("Ingrese el nuevo nombre del producto", producto.nombre);
-        if (nuevoNombre !== null) {
-            producto.nombre = nuevoNombre;
+        const nuevaCantidad = prompt("Ingrese la cantidad del producto", producto.cantidad);
+        if (nuevaCantidad !== null) {
+            producto.cantidad = nuevaCantidad;
             cargarProductos(); // Recargar la lista de productos después de la edición
         }
     } else {
