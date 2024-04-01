@@ -118,17 +118,16 @@ function rellenarProducto(id) {
     }
 }
 
+
 function eliminarProducto(id) {
-    const productoIndex = productos.findIndex(p => p.id === id);
-    if (productoIndex !== -1) {
-        // Si el producto está en la lista, procede a eliminarlo
-        productos.splice(productoIndex, 1);
-        cargarProductos(); // Recarga la lista de productos después de eliminar
+    // Usa el ID único asignado para encontrar la fila del producto y eliminarla.
+    const productoAEliminar = document.getElementById(`producto-${id}`);
+    if (productoAEliminar) {
+        productoAEliminar.remove();
     } else {
         alert("Producto no encontrado");
     }
 }
-
 
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('loginBtn').addEventListener('click', login);
