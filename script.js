@@ -106,12 +106,17 @@ function rellenarProducto(id) {
         if (producto.cantidad < producto.cantidad_maxima / 2) {
             producto.cantidad = producto.cantidad_maxima;
             cargarProductos(); // Recarga la lista de productos después de rellenar
-            
-            // Actualizar el valor de cantidad en la tabla
-            const cantidadElement = document.getElementById(`producto-${id}`).querySelectorAll('td')[3];
-            cantidadElement.textContent = producto.cantidad;
         } else {
             alert("La cantidad actual no está por debajo del 50% de la cantidad máxima.");
+        }
+        
+        // Verificar si la cantidad actual excede la cantidad máxima
+        if (producto.cantidad > producto.cantidad_maxima) {
+            producto.cantidad = producto.cantidad_maxima;
+            
+            // Actualizar la cantidad en la tabla
+            const cantidadElement = document.getElementById(`producto-${id}`).querySelectorAll('td')[3];
+            cantidadElement.textContent = producto.cantidad;
         }
     } else {
         alert("Producto no encontrado");
