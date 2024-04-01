@@ -55,6 +55,9 @@ function determinarEstado(cantidad, cantidadMaxima) {
     // Determinar el estado en base a la cantidad actual y la cantidad máxima
     return cantidad < cantidadMaxima / 2 ? "Por rellenar" : "Disponible";
 }
+let productos = [];
+
+// Resto del código...
 
 function agregarProducto() {
     // Obtener valores del formulario
@@ -66,6 +69,17 @@ function agregarProducto() {
     // Generar un ID ficticio para el ejemplo; en una aplicación real, probablemente vendría de la base de datos
     const id = Math.floor(Math.random() * 10000) + 4;
     const estado = determinarEstado(cantidad, cantidadMaxima);
+
+    // Agregar el nuevo producto al arreglo de productos
+    const nuevoProducto = {
+        id: id,
+        codigo: codigo,
+        nombre: nombre,
+        cantidad: cantidad,
+        cantidad_maxima: cantidadMaxima,
+        estado: estado
+    };
+    productos.push(nuevoProducto);
 
     // Agregar producto a la tabla
     const listaProductos = document.getElementById('lista-productos');
@@ -85,7 +99,6 @@ function agregarProducto() {
     `;
     listaProductos.appendChild(tr);
 }
-
 function rellenarProducto(id) {
     const productoIndex = productos.findIndex(p => p.id === id);
     if (productoIndex !== -1) {
