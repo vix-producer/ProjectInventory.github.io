@@ -105,7 +105,6 @@ function rellenarProducto(id) {
         const producto = productos[productoIndex];
         if (producto.cantidad < producto.cantidad_maxima / 2) {
             producto.cantidad = producto.cantidad_maxima;
-            cargarProductos(); // Recarga la lista de productos después de rellenar
             
             // Actualizar el valor de cantidad en la tabla
             const cantidadElement = document.getElementById(`producto-${id}`).querySelectorAll('td')[3];
@@ -118,12 +117,18 @@ function rellenarProducto(id) {
     }
 }
 
-
 function eliminarProducto(id) {
-    // Usa el ID único asignado para encontrar la fila del producto y eliminarla.
-    const productoAEliminar = document.getElementById(`producto-${id}`);
-    if (productoAEliminar) {
-        productoAEliminar.remove();
+    // Busca el índice del producto en el arreglo productos
+    const productoIndex = productos.findIndex(p => p.id === id);
+    if (productoIndex !== -1) {
+        // Elimina el producto del arreglo productos
+        productos.splice(productoIndex, 1);
+        
+        // Elimina el elemento de la tabla HTML
+        const productoAEliminar = document.getElementById(`producto-${id}`);
+        if (productoAEliminar) {
+            productoAEliminar.remove();
+        }
     } else {
         alert("Producto no encontrado");
     }
