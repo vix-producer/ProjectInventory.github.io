@@ -8,8 +8,25 @@
 </head>
 <body>
     <div class="container mt-5">
+
         <h2 class="mb-4">Inventario</h2>
         <div class="add-product-form mb-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Cantidad Máxima</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-productos">
+                    <!-- Los productos se insertarán aquí mediante JavaScript -->
+                </tbody>
+            </table>
             <h4>Agregar Producto</h4>
             <div class="form-group">
                 <label for="inputCodigo">Código</label>
@@ -29,22 +46,7 @@
             </div>
             <button class="btn btn-primary" onclick="agregarProducto()">Agregar</button>
         </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Código</th>
-                    <th>Nombre</th>
-                    <th>Cantidad</th>
-                    <th>Cantidad Máxima</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="lista-productos">
-                <!-- Los productos se insertarán aquí mediante JavaScript -->
-            </tbody>
-        </table>
+        
     </div>
     <script src="script.js"></script>
 </body>
